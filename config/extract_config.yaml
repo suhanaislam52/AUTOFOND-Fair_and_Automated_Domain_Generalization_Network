@@ -1,0 +1,14 @@
+wandb:
+  entity: "birjis-afroz-north-south-university
+  project: "AutoFOND"
+  sweep_ids: ["i4quzpc4", "5ewn6jqq", "lpyna21q"]
+filtering_criteria:
+  kd_algo: FOND
+separating_criteria:
+  - "dataset"
+  - "test_set_id"
+metric:
+  name: "val/nacc"
+  goal: "max"
+script_options:
+  display_all_runs: True

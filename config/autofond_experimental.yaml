@@ -1,0 +1,43 @@
+# AutoFOND Experiment Config
+# Directly matches the structure from fond_sweep.yaml
+
+# Algorithm and dataset
+algo: "FOND"
+dataset: "PACS"  # Options: VLCS, PACS
+test_set_id: 0  # 0, 1, 2, or 3
+
+# Paths
+data_dir: "./data"
+log_dir: "./logs"  # Not used in simple training, but keeping for compatibility
+
+# Training settings
+n_epochs: 15  # Converted from 5001 steps (~15 epochs at 32 batch size)
+checkpoint_freq: 1  # Evaluate every epoch (was 300 steps)
+holdout_fraction: 0.2
+
+# Model checkpointing
+model_checkpoint:
+  metric: "val/oacc"
+  maximize: true
+
+# Seeds
+overall_seed: 1
+trial_id: 0
+hparam_id: 0  # 0=default hparams, 1-4=random variants
+
+# System
+num_workers: 4
+
+# Dataset config (from sweep)
+overlap: "high"  # Must match PACS.OVERLAP_CONFIG keys
+num_classes: null
+num_domain_linked_classes: null
+
+# AutoFOND specific (disabled for baseline)
+auto_augment: false
+augment_search_epochs: 5
+augment_policy_size: 5
+augment_num_policies: 3
+
+# Teacher paths (empty for regular FOND)
+teacher_paths: {}
